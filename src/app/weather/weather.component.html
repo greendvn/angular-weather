@@ -1,0 +1,40 @@
+<div class="container">
+        <h3 class="text-center my-4"> Search for weather: </h3>
+          <input type="search" class="form-control" style="max-width: 500px;margin: auto" placeholder="Please input a Location" [formControl]="weatherSearchForm">
+      <h3 class="text-center my-4">Weather Details: </h3>
+      <div id="background">
+        <section id='itroBackground' class="intro">
+          <div class="inner">
+            <div class="content">
+              <div class="weather-app">
+                <div class="left">
+                  <div id="toggleCelsius" class="temperature-celsius" [hidden]="!showTemp"><span id="temperatureCelsius">{{weatherData.main.temp - 273.15| number}}°C</span></div>
+                  <div [hidden]="showTemp" id='toggleFahrenheit' class="temperature-fahrenheit"><span id="temperatureFahrenheit">{{(weatherData.main.temp-273.15)*1.800 + 32}}°F</span></div>
+                  <div class="weatherMain">{{weatherData.weather[0].main}}</div>
+                  <div class="location"><span id="loc">{{weatherData.name}}</span></div>
+                </div>
+                <div class="right">
+                  <div class="top">
+                    <img id="icon" width="75px" src="http://openweathermap.org/img/wn/{{weatherData.weather[0].icon}}@2x.png" onerror="this.src='http://openweathermap.org/img/w/11d.png'" />
+                    <p id="description"></p>
+                  </div>
+                  <div class="bottom">
+                    <div class="humidity">
+								<span>Humidity:
+									<span id="humidity">{{weatherData.main.humidity}}</span>%
+									<span>💧</span>
+								</span>
+                    </div>
+                    <div class="wind">
+                      <span>Wind: <span id="wind">{{weatherData.wind.speed}}</span>km/h | Direction: <span id="direction">{{direction}}</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" (click)="toggleCF()" id="toggleCF" class="button">Toggle C/F</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+</div>
